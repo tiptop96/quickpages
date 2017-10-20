@@ -26,5 +26,26 @@ const Templates = ({coords}) => (
     ))
 );
 
-export default Templates;
+class Temp extends Component {
+    render() {
+        let coords = this.props.coords;
+        let return_coords = this.props.get;
+      return (
+        coords.map((coords, index) => (
+        //In here are the correct arrays
+        <a className="canvas-outer" onClick={() => return_coords(coords)}>
+        <div className="canvas">   
+            <svg width="148" height="210" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <rect id={index} x="0" y="0" width="148" height="210" stroke="black" fill="grey" stroke-width="1" />      
+                <Subdiv coords={coords}/>
+            </svg>
+        </div>
+        </a>
+        ))
+      );
+    }
+  }
+  
+
+export default Temp;
 

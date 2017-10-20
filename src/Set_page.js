@@ -31,7 +31,7 @@ class SetModal extends Component {
             <h1 id="heading">Pick a template</h1>
             <button type='submit' onClick={this.openModal}>Close</button>
             <div id="selection">
-                <Pages />
+                <Pages get={this.props.get}/>
             </div>
         </Modal>
       </div>

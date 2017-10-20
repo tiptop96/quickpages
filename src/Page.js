@@ -12,9 +12,9 @@ class Pages extends Component {
       return (
           <div>  
           <h3>One column pages</h3>
-          <Template coords={oneCol} />
+          <Template coords={oneCol} get={this.props.get} />
           <h3>Squared pages</h3>
-          <Template coords={squared} />
+          <Template coords={squared} get={this.props.get}/>
           </div>
       );
     }

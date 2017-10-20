@@ -25,8 +25,8 @@ class Board extends Component {
   render() {
     return (
       <div>
-          <Page coords={this.state.c}/>
-          <SetModal />
+          <Page coords={this.state.c} />
+          <SetModal get={this.get_c_from_p.bind(this)}/>
       </div>
     );
   }
