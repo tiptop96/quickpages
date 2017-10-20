@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
-import get_coords from './coords'
-import Template from './Template'
-import Subdivider from './Sub_divs'
 import Page from './Blank_page'
-import SetModal from './Set_page'
 
-let full = get_coords(0);
-let oneCol = get_coords(1);
-let squared = get_coords(2);
 
-console.log(oneCol[0])
 
+function renderCurrPages(){
+
+}
+
+//needs func for adding pages
 class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            c: oneCol[7],
+            pages: [<Page />, <Page />]
         }
     }
-    get_c_from_p(val) {
-        this.setState({c: val})
-        console.log(val);
+    addPages (addval) {
+        for (var i = 0; i < addval; i++){
+            this.setState({
+                pages: this.state.pages.concat([<Page />])
+            })
+        }
     }
   render() {
     return (
       <div>
-          <Page coords={this.state.c} />
-          <SetModal get={this.get_c_from_p.bind(this)}/>
+          <button type="submit" onClick={() => this.addPages(1)}>Add</button>
+          {this.state.pages.map((p, index) => {
+              return <Page id={index} />
+          })}
       </div>
     );
   }
