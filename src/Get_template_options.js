@@ -4,17 +4,18 @@ import get_coords from './coords'
 
 //Put all options for pages in here probably. Aka combine the templates with all coords.
 
-let oneCol = get_coords(1);
-let squared = get_coords(2);
+let all_coords = get_coords();
 
 class Pages extends Component {
     render() {
       return (
-          <div>  
+          <div>
+          <h3>Full page</h3>
+          <Templates coords={all_coords[0]} getCoords={this.props.getCoords} />  
           <h3>One column pages</h3>
-          <Templates coords={oneCol} getCoords={this.props.getCoords} />
+          <Templates coords={all_coords[1]} getCoords={this.props.getCoords} />
           <h3>Squared pages</h3>
-          <Templates coords={squared} getCoords={this.props.getCoords}/>
+          <Templates coords={all_coords[2]} getCoords={this.props.getCoords} />
           </div>
       );
     }

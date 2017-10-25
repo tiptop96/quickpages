@@ -13,7 +13,7 @@ class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pages: [<Page />, <Page />],
+            pages: [<Page />],
             addNum: 0,
         }
     }
@@ -39,9 +39,7 @@ class Board extends Component {
           <button type="submit" onClick={(addval) => this.addPages(this.state.addNum)}>Add</button>
           <input type="text" value={this.state.addNum} onChange={(e) => this.handleAddNum(e)}/>
           </div>
-          {this.state.pages.map((p, i) => {
-              return <Page key={i} />
-          })}
+          {this.state.pages}
       </div>
     );
   }
