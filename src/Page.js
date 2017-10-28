@@ -10,7 +10,9 @@ class Blank extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coords: all_coords[0][0],
+            coords: JSON.parse(JSON.stringify(all_coords[0][0])),
+            cat_tag: '',
+            group_tag: 'Main',
         }
     }
     get_coords_from_t(c) {
@@ -18,19 +20,31 @@ class Blank extends Component {
         this.setState({
             coords: page_coords,
         })
+        this.props.change_group(this.state.group_tag, page_coords)
     }
     get_colors_from_t(e, i) {      
         let newcolors = this.state.coords;
         newcolors[i].color = e.target.value;
+        console.log(this.state.group_tag);
         this.setState({
             coords: newcolors,
-    });
-        console.log(e.target.value);
-        console.log(i);
+        });
+        this.props.change_group(this.state.group_tag, e.target.value)
+    }
+    setGroup(e) {
+        let val = e.target.value;
+        this.setState({
+            group_tag: val,
+        });
+        console.log(e.target.value)
+        console.log(this.state.group_tag)
     }
     render() {
       return (
-        <div className='canvas'>   
+        <div className='canvas'> 
+          <select onChange={(e) => this.setGroup(e)}>
+            {this.props.exsisting_groups.map((group_tag) => <option>{group_tag}</option>)}
+          </select><br/>
             <svg width="148" height="210" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <rect id="Temp" x="0" y="0" width="148" height="210" stroke="black" fill="grey" stroke-width="1" />      
                 {Subdivider(this.state.coords)}

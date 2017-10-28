@@ -45,7 +45,7 @@ class SetModal extends Component {
                 {Subdivider(this.props.pagecoords)} {/*Preiew window*/}
                 
             </svg>
-                <Template_options getCoords={this.props.get_coords}  />
+            <Template_options getCoords={this.props.get_coords}  />
             </div>
         </Modal>
       </div>
